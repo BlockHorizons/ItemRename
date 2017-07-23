@@ -15,4 +15,5 @@ I found an issue in the plugin which I would like to be fixed quickly! What do I
 
 <br>
 I want something to be added to the plugin. Where can I ask if this can be made?<br>
+
 > This too is most easily managed in the Issues tab. Not every feature is guaranteed to be added, but everything will be taken in consideration.
