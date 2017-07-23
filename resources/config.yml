@@ -1,0 +1,6 @@
+# Display a message (defined below) to the player after succesfully renaming item
+Display-Message: true
+
+# The message displayed to the player after succesfully renaming item
+# `Display-Message` must be set to `true`
+Message: '§aYou renamed your item to §2%s§a!'

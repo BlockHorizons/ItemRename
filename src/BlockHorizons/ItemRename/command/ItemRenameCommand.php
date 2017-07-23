@@ -41,6 +41,12 @@ class ItemRenameCommand extends Command implements PluginIdentifiableCommand {
 		}
 		$item->clearCustomName();
 		$item->setCustomName(str_replace("&", TF::ESCAPE, $args[0]));
+		$sender->sendItemInHand($item);
+		if($this->getPlugin()->getConfig()->get("Display-Message", true) {
+			$sender->sendMessage(vsprintf($this->getPlugin()->getConfig()->get("Message"), [
+				$args[0] // new name
+			]));
+		}
 		return true;
 	}
 

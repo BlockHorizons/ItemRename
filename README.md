@@ -1,8 +1,8 @@
 # ItemRename
 Rename the item currently in your hand with a simple command!
-
 <br>
-### Installation  
+
+### Installation
 
 It is mostly recommended to use released versions of the plugin, which can be found in the released version on Poggit. (once there is one)<br>
 If you do decide you want the latest version of the plugin, it is recommended you fetch a pre-compiled phar file from Poggit-CI, which can be found below.
@@ -15,5 +15,5 @@ I found an issue in the plugin which I would like to be fixed quickly! What do I
 
 <br>
 I want something to be added to the plugin. Where can I ask if this can be made?<br>
-
+  
 > This too is most easily managed in the Issues tab. Not every feature is guaranteed to be added, but everything will be taken in consideration.
