@@ -1,7 +1,11 @@
 ---
 name: ItemRename
-version: 1.0.0
-api: [3.0.0-ALPHA7]
+version: 1.1.0
+api: 5.30.0
 main: BlockHorizons\ItemRename\Loader
 author: BlockHorizons
+permissions:
+  itemrename.rename:
+    default: true
+    permissions: "Allows using the /itemrename command"
 ...

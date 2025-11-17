@@ -1,6 +1,10 @@
-# Display a message (defined below) to the player after succesfully renaming item
-Display-Message: true
+# ItemRename by BlockHorizons 
+# https://github.com/BlockHorizons/ItemRename
 
-# The message displayed to the player after succesfully renaming item
-# `Display-Message` must be set to `true`
-Message: '§aYou renamed your item to §2%s§a!'
+messages:
+  # The message displayed to the player after successfully renaming the item.
+  # Available placeholders: {old_name} {new_name}
+  renamed: '§aYou renamed your item to §2{new_name}§a!'
+
+  # The message displayed when the player is not holding an item
+  no-item: '§cYou are not holding an item!'

@@ -6,13 +6,12 @@ namespace BlockHorizons\ItemRename\command;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
-use pocketmine\command\PluginIdentifiableCommand;
+use pocketmine\player\Player;
 use pocketmine\utils\TextFormat as TF;
 
 use BlockHorizons\ItemRename\Loader;
 
-class ItemRenameCommand extends Command implements PluginIdentifiableCommand {
+class ItemRenameCommand extends Command {
 	/** @var Loader */
 	private $loader;
 	
@@ -34,23 +33,33 @@ class ItemRenameCommand extends Command implements PluginIdentifiableCommand {
 			$sender->sendMessage(TF::RED . $this->getUsage());
 			return true;
 		}
+
+		$config = $this->loader->getConfig();
 		$item = $sender->getInventory()->getItemInHand();
+
 		if($item === null) {
-			$sender->sendMessage(TF::RED . "You are not holding an item!");
+			$sender->sendMessage($config->getNested("messages.no-item"));
 			return true;
 		}
+
+		$oldName = $item->getCustomName() ?: $item->getName();
+		$newName = implode(" ", $args);
+
 		$item->clearCustomName();
-		$item->setCustomName(str_replace("&", TF::ESCAPE, $args[0]));
-		$sender->setItemInHand($item);
-		if($this->getPlugin()->getConfig()->get("Display-Message", true)) {
-			$sender->sendMessage(vsprintf($this->getPlugin()->getConfig()->get("Message"), [
-				$args[0] // new name
-			]));
-		}
+		$item->setCustomName(str_replace("&", TF::ESCAPE, $newName));
+		$sender->getInventory()->setItemInHand($item);
+
+		$sender->sendMessage($this->parseMessage($config->getNested("messages.renamed"), [
+			"old_name" => $oldName,
+			"new_name" => $newName
+		]));
 		return true;
 	}
 
-	public function getPlugin(): Loader {
-		return $this->loader;
+	public function parseMessage(string $message, array $placeholders = []): string {
+		foreach ($placeholders as $key => $value) {
+			$message = str_replace("{" . $key . "}", $value, $message);
+		}
+		return $message;
 	}
 }
