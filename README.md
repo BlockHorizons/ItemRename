@@ -1,6 +1,7 @@
 # ItemRename
 Rename the item currently in your hand with a simple command!
 <br>
+[![Hits](https://hitcount.dev/p/BlockHorizons/ItemRename.svg)](https://hitcount.dev/p/BlockHorizons/ItemRename)
 
 ### Installation
 
